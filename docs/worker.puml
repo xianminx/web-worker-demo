@@ -1,0 +1,13 @@
+@startuml
+participant "Main Thread" as A
+participant "Web Worker" as B
+
+A -> B: Start Worker
+B -> B: Start Timer
+loop every second
+    B -> A: Post Message (current time)
+    A -> A: Update UI Timer
+end
+A -> B: Stop Worker
+B -> B: Stop Timer
+@enduml
